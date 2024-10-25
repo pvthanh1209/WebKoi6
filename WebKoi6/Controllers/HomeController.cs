@@ -1,16 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using WebKoi6.BLL.InterfaceBLL;
 using WebKoi6.Models;
 
 namespace WebKoi6.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IBacsiBLL _bacsi;
+        public HomeController()
         {
-            _logger = logger;
+            _bacsi = SingletonIpl.
         }
 
         public IActionResult Index()

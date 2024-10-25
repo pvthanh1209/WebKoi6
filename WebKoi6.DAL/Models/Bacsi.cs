@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebKoi6.DAL.Models;
 
@@ -13,4 +14,6 @@ public partial class Bacsi
     public string? Email { get; set; }
 
     public string? Availability { get; set; }
+    [NotMapped]
+    public int TotalRows { get; set; }
 }

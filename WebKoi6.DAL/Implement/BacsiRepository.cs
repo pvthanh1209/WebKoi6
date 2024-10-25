@@ -21,7 +21,20 @@ namespace WebKoi6.DAL.Implement
             try
             {
                 var dbBacsi = _context.Bacsis.AsQueryable();
-                
+                int totalRow = dbBacsi.Count();
+                var data = (from b in dbBacsi
+                           where((string.IsNullOrEmpty(keywork) 
+                           || b.TenBacSi.ToLower().Trim().Contains(keywork.ToLower().Trim())))
+                           select new Bacsi
+                           {
+                                Id = b.Id,
+                                TenBacSi = b.TenBacSi,
+                                KinhNghiem = b.KinhNghiem,
+                                Email = b.Email,
+                                Availability = b.Availability,
+                                TotalRows = totalRow,
+                           }).Skip(offset).Take(limit).ToList();
+                return data;            
             }
             catch (Exception ex)
             {
