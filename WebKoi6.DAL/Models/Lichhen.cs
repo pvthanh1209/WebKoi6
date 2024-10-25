@@ -13,5 +13,5 @@ public partial class Lichhen
 
     public string? TrangThai { get; set; }
 
-    public ulong? HomeVisit { get; set; }
+    public ulong HomeVisit { get; set; }
 }

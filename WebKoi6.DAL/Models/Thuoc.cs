@@ -15,5 +15,5 @@ public partial class Thuoc
 
     public string? GhiChu { get; set; }
 
-    public decimal? Gia { get; set; }
+    public decimal Gia { get; set; }
 }

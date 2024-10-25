@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace WebKoi6.DAL.Models;
 
-public partial class Banggium
+public partial class Banggia
 {
     public string? TenDichVu { get; set; }
 
-    public decimal? Gia { get; set; }
+    public decimal Gia { get; set; }
 }

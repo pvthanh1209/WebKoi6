@@ -15,11 +15,11 @@ public partial class Chuandoantinhtrangnuoc
 
     public DateOnly? NgayThang { get; set; }
 
-    public decimal? Ph { get; set; }
+    public decimal Ph { get; set; }
 
-    public decimal? DoCuongNuoc { get; set; }
+    public decimal DoCuongNuoc { get; set; }
 
-    public decimal? NhietDo { get; set; }
+    public decimal NhietDo { get; set; }
 
     public string? TinhTrang { get; set; }
 }

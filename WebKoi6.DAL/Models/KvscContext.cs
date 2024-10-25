@@ -18,7 +18,7 @@ public partial class KvscContext : DbContext
 
     public virtual DbSet<Bacsi> Bacsis { get; set; }
 
-    public virtual DbSet<Banggium> Banggia { get; set; }
+    public virtual DbSet<Banggia> Banggias { get; set; }
 
     public virtual DbSet<Chuandoanbenhcakoi> Chuandoanbenhcakois { get; set; }
 
@@ -51,9 +51,8 @@ public partial class KvscContext : DbContext
 
         modelBuilder.Entity<Bacsi>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("bacsi");
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+            entity.ToTable("bacsi");
 
             entity.Property(e => e.Availability)
                 .HasDefaultValueSql("'Rảnh'")
@@ -62,7 +61,7 @@ public partial class KvscContext : DbContext
             entity.Property(e => e.TenBacSi).HasMaxLength(255);
         });
 
-        modelBuilder.Entity<Banggium>(entity =>
+        modelBuilder.Entity<Banggia>(entity =>
         {
             entity
                 .HasNoKey()
