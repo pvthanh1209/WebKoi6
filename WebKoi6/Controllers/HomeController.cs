@@ -7,10 +7,10 @@ namespace WebKoi6.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IBacsiBLL _bacsi;
-        public HomeController()
+        private readonly ILogger<HomeController> _logger;
+        public HomeController(ILogger<HomeController> logger)
         {
-            _bacsi = SingletonIpl.
+            _logger = logger;
         }
 
         public IActionResult Index()
