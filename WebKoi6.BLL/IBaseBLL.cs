@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebKoi6.DAL.Interface;
+using WebKoi6.BLL.InterfaceBLL;
 
-namespace WebKoi6.DAL
+namespace WebKoi6.BLL
 {
-    public interface IBaseDAL
+    public interface IBaseBLL
     {
-        IBacsiRepository bacsiRepository { get; }
+        IBacsiBLL bacsiBLLRepo { get; }
     }
 }

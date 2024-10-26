@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
+using WebKoi6.BLL;
+using WebKoi6.DAL;
+using WebKoi6.DAL.Base;
 using WebKoi6.DAL.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +25,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<KvscContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 builder.Services.AddHttpContextAccessor();
+/*builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));*/
+builder.Services.AddScoped<IBaseDAL, IplBaseDAL>();
+builder.Services.AddScoped<IBaseBLL, IplBaseBLL>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

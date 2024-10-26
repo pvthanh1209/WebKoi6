@@ -15,16 +15,18 @@ namespace WebKoi6.DAL
     public class IplBaseDAL : IBaseDAL
     {
         private KvscContext _dbContext;
+        public IConfiguration _configuration { get; }
         public IplBaseDAL(KvscContext dbContext, IConfiguration configuration)
         {
             _dbContext = dbContext;
+            _configuration = configuration;
         }
         private IBacsiRepository _bacsiRepository;
         public IBacsiRepository bacsiRepository
         {
             get
             {
-                return _bacsiRepository ?? (_bacsiRepository = new BacsiRepository(_dbContext));
+                return _bacsiRepository ?? (_bacsiRepository = new BacsiRepository(_dbContext, _configuration));
             }
         }
     }

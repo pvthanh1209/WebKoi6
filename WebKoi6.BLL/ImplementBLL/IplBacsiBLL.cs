@@ -1,24 +1,33 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebKoi6.BLL.InterfaceBLL;
+using WebKoi6.DAL;
+using WebKoi6.DAL.Implement;
 using WebKoi6.DAL.Interface;
 using WebKoi6.DAL.Models;
 
 namespace WebKoi6.BLL.ImplementBLL
 {
-    public class IplBacsiBLL : IBacsiRepository
+    public class IplBacsiBLL : IBacsiBLL
     {
-        private readonly IBacsiRepository _bacsiRepository;
-        public IplBacsiBLL(IBacsiRepository bacsiRepository)
+        private readonly IBaseDAL _baseDAL;
+        public IplBacsiBLL(IBaseDAL baseDAL)
         {
-            _bacsiRepository = bacsiRepository;
+            _baseDAL = baseDAL;
+        }
+
+        public List<Bacsi> GetAll()
+        {
+            return _baseDAL.bacsiRepository.GetAll();
         }
 
         public List<Bacsi> GetListAllPaging(string keywork = null, int offset = 0, int limit = 10)
         {
-            return _bacsiRepository.GetListAllPaging(keywork, offset, limit);
+            return _baseDAL.bacsiRepository.GetListAllPaging(keywork, offset, limit);
         }
     }
 }

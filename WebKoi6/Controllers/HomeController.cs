@@ -7,14 +7,15 @@ namespace WebKoi6.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IBacsiBLL _bacsiBLL;
+        public HomeController(IBacsiBLL bacsiBLL)
         {
-            _logger = logger;
+            _bacsiBLL = bacsiBLL;
         }
 
         public IActionResult Index()
         {
+           var data = _bacsiBLL.GetAll();
             return View();
         }
 

@@ -10,5 +10,6 @@ namespace WebKoi6.BLL.InterfaceBLL
     public interface IBacsiBLL
     {
         List<Bacsi> GetListAllPaging(string keywork = null, int offset = 0, int limit = 10);
+        List<Bacsi> GetAll();
     }
 }
