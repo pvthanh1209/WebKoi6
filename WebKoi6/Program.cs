@@ -4,6 +4,7 @@ using WebKoi6.BLL;
 using WebKoi6.DAL;
 using WebKoi6.DAL.Base;
 using WebKoi6.DAL.Models;
+using static System.Net.Mime.MediaTypeNames;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,17 +25,18 @@ builder.Services.AddMvc();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<KvscContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-builder.Services.AddHttpContextAccessor();
 /*builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));*/
 builder.Services.AddScoped<IBaseDAL, IplBaseDAL>();
 builder.Services.AddScoped<IBaseBLL, IplBaseBLL>();
+builder.Services.AddControllers();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddOptions();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 

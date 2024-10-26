@@ -22,7 +22,7 @@ namespace WebKoi6.BLL.ImplementBLL
 
         public List<Bacsi> GetAll()
         {
-            return _baseDAL.bacsiRepository.GetAll();
+            return _baseDAL.bacsiRepository.Get().ToList();
         }
 
         public List<Bacsi> GetListAllPaging(string keywork = null, int offset = 0, int limit = 10)
