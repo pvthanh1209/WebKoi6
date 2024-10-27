@@ -20,14 +20,77 @@ namespace WebKoi6.BLL.ImplementBLL
             _baseDAL = baseDAL;
         }
 
-        public List<Bacsi> GetAll()
+        public bool Delete(int Id)
         {
-            return _baseDAL.bacsiRepository.Get().ToList();
+            try
+            {
+                _baseDAL.bacsiRepository.Delete(Id);
+                _baseDAL.bacsiRepository.SaveChange();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public List<Bacsi> GetAll(string search = null)
+        {
+            if (!string.IsNullOrEmpty(search))
+            {
+                return _baseDAL.bacsiRepository.Get(x => x.Email.ToLower().Trim().Equals(search.ToLower().Trim())).ToList();
+            }
+            else
+            {
+                return _baseDAL.bacsiRepository.Get().ToList();
+
+            }
+        }
+
+        public Bacsi GetById(int Id)
+        {
+            try
+            {
+                var data = _baseDAL.bacsiRepository.GetById(Id);
+                return data;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         public List<Bacsi> GetListAllPaging(string keywork = null, int offset = 0, int limit = 10)
         {
             return _baseDAL.bacsiRepository.GetListAllPaging(keywork, offset, limit);
+        }
+
+        public bool Insert(Bacsi bacsi)
+        {
+            try
+            {
+                _baseDAL.bacsiRepository.Insert(bacsi);
+                _baseDAL.bacsiRepository.SaveChange();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool Update(Bacsi bacsi)
+        {
+            try
+            {
+                _baseDAL.bacsiRepository.Update(bacsi);
+                _baseDAL.bacsiRepository.SaveChange();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

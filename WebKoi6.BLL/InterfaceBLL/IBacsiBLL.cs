@@ -10,6 +10,10 @@ namespace WebKoi6.BLL.InterfaceBLL
     public interface IBacsiBLL
     {
         List<Bacsi> GetListAllPaging(string keywork = null, int offset = 0, int limit = 10);
-        List<Bacsi> GetAll();
+        List<Bacsi> GetAll(string search = null);
+        bool Insert(Bacsi bacsi);
+        bool Update(Bacsi bacsi); 
+        bool Delete(int Id);
+        Bacsi GetById(int Id);
     }
 }

@@ -11,5 +11,7 @@ namespace WebKoi6.DAL
     {
         IBacsiRepository bacsiRepository { get; }
         ITaikhoanRepository taikhoanRepository { get; }
+        IDichvuthuy dichvuthuyRepository { get; }
+        IKhachhang khachhangRepository { get; }
     }
 }

@@ -35,5 +35,21 @@ namespace WebKoi6.BLL
                 return _taikhoanBLLRepo ?? (_taikhoanBLLRepo = new IplTaiKhoanBLL(_baseDAL));
             }
         }
+        private IDichvuthuyBLL _dichvuBLLRepo;
+        public IDichvuthuyBLL dichvuthuyBLL
+        {
+            get
+            {
+                return _dichvuBLLRepo ?? (_dichvuBLLRepo = new IplDichvuthuyBLL(_baseDAL));
+            }
+        }
+        private IKhachhangBLL _khachhangBLLRepo;
+        public IKhachhangBLL khachhangBLL
+        {
+            get
+            {
+                return _khachhangBLLRepo ?? (_khachhangBLLRepo = new IplKhachhangBLL(_baseDAL));
+            }
+        }
     }
 }

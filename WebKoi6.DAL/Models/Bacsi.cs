@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebKoi6.DAL.Models;
@@ -7,10 +8,11 @@ namespace WebKoi6.DAL.Models;
 public partial class Bacsi
 {
     public int Id { get; set; }
+    [Required(ErrorMessage = "Vui lòng nhập tên bác sĩ")]
     public string? TenBacSi { get; set; }
-
+    [Required(ErrorMessage = "Vui lòng nhập kinh nghiệm")]
     public int KinhNghiem { get; set; }
-
+    [Required(ErrorMessage = "Vui lòng nhập email")]
     public string? Email { get; set; }
 
     public string? Availability { get; set; }

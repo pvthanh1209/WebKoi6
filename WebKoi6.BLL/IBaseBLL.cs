@@ -11,5 +11,7 @@ namespace WebKoi6.BLL
     {
         IBacsiBLL bacsiBLLRepo { get; }
         ITaiKhoanBLL taiKhoanBLL { get; }
+        IDichvuthuyBLL dichvuthuyBLL { get; }
+        IKhachhangBLL khachhangBLL { get; }
     }
 }

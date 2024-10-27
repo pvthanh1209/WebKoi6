@@ -158,10 +158,8 @@ public partial class KvscContext : DbContext
 
         modelBuilder.Entity<Khachhang>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("khachhang");
-
+            entity.ToTable("khachhang");
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
             entity.Property(e => e.Email).HasMaxLength(255);
             entity.Property(e => e.SoDienThoai).HasMaxLength(15);
             entity.Property(e => e.TenKhachHang).HasMaxLength(255);

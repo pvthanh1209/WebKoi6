@@ -27,7 +27,10 @@ namespace WebKoi6.DAL.Implement
             try
             {
                 var dbBacsi = _dbContext.Bacsis.AsQueryable();
-                int totalRow = dbBacsi.Count();
+                int totalRow = (from b in dbBacsi
+                                where ((string.IsNullOrEmpty(keywork)
+                                || b.TenBacSi.ToLower().Trim().Contains(keywork.ToLower().Trim())))
+                                select b).Count();
                 var data = (from b in dbBacsi
                            where((string.IsNullOrEmpty(keywork) 
                            || b.TenBacSi.ToLower().Trim().Contains(keywork.ToLower().Trim())))
@@ -39,7 +42,7 @@ namespace WebKoi6.DAL.Implement
                                 Email = b.Email,
                                 Availability = b.Availability,
                                 TotalRows = totalRow,
-                           }).Skip(offset).Take(limit).ToList();
+                           }).OrderByDescending(x => x.Id).Skip(offset).Take(limit).ToList();
                 return data;            
             }
             catch (Exception ex)

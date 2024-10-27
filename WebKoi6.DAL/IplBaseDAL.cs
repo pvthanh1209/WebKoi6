@@ -37,5 +37,21 @@ namespace WebKoi6.DAL
                 return _taikhoanRepository ?? (_taikhoanRepository = new TaikhoanRepository(_dbContext, _configuration));
             }
         }
+        private IDichvuthuy _dichvuthuyRepository;
+        public IDichvuthuy dichvuthuyRepository
+        {
+            get
+            {
+                return _dichvuthuyRepository ?? (_dichvuthuyRepository = new DichvuthuyRepository(_dbContext, _configuration));
+            }
+        }
+        private IKhachhang _khachhangRepository;
+        public IKhachhang khachhangRepository
+        {
+            get
+            {
+                return _khachhangRepository ?? (_khachhangRepository = new KhachhangRepository(_dbContext, _configuration));
+            }
+        }
     }
 }
