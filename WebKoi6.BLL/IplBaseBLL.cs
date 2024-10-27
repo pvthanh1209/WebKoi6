@@ -27,5 +27,13 @@ namespace WebKoi6.BLL
                 return _bacsiBLLRepo ?? (_bacsiBLLRepo = new IplBacsiBLL(_baseDAL));
             }
         }
+        private ITaiKhoanBLL _taikhoanBLLRepo;
+        public ITaiKhoanBLL taiKhoanBLL
+        {
+            get
+            {
+                return _taikhoanBLLRepo ?? (_taikhoanBLLRepo = new IplTaiKhoanBLL(_baseDAL));
+            }
+        }
     }
 }

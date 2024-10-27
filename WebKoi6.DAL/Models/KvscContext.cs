@@ -43,6 +43,7 @@ public partial class KvscContext : DbContext
     public virtual DbSet<Tintuc> Tintucs { get; set; }
 
     public virtual DbSet<Trungtam> Trungtams { get; set; }
+    public virtual DbSet<Taikhoan> Taikhoans { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -228,6 +229,14 @@ public partial class KvscContext : DbContext
             entity.Property(e => e.Hotline).HasMaxLength(15);
             entity.Property(e => e.MoTa).HasColumnType("text");
             entity.Property(e => e.TenTrungTam).HasMaxLength(100);
+        });
+        modelBuilder.Entity<Taikhoan>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+            entity.ToTable("taikhoan");
+            entity.Property(e => e.FullName).HasMaxLength(500);
+            entity.Property(e => e.Username).HasMaxLength(250);
+            entity.Property(e => e.Password).HasMaxLength(500);
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -10,5 +10,6 @@ namespace WebKoi6.DAL
     public interface IBaseDAL
     {
         IBacsiRepository bacsiRepository { get; }
+        ITaikhoanRepository taikhoanRepository { get; }
     }
 }

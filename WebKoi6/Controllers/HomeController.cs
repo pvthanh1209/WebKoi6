@@ -18,7 +18,7 @@ namespace WebKoi6.Controllers
 
         public IActionResult Index()
         {
-           var data = _baseBLL.bacsiBLLRepo.GetAll();
+           //var data = _baseBLL.bacsiBLLRepo.GetAll();
             return View();
         }
 

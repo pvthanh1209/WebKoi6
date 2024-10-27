@@ -29,5 +29,13 @@ namespace WebKoi6.DAL
                 return _bacsiRepository ?? (_bacsiRepository = new BacsiRepository(_dbContext, _configuration));
             }
         }
+        private ITaikhoanRepository _taikhoanRepository;
+        public ITaikhoanRepository taikhoanRepository
+        {
+            get
+            {
+                return _taikhoanRepository ?? (_taikhoanRepository = new TaikhoanRepository(_dbContext, _configuration));
+            }
+        }
     }
 }

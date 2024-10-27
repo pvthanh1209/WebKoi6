@@ -10,5 +10,6 @@ namespace WebKoi6.BLL
     public interface IBaseBLL
     {
         IBacsiBLL bacsiBLLRepo { get; }
+        ITaiKhoanBLL taiKhoanBLL { get; }
     }
 }
