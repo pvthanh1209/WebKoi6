@@ -15,5 +15,6 @@ namespace WebKoi6.BLL.InterfaceBLL
         bool Update(Dichvuthuy model);
         bool Delete(int Id);
         Dichvuthuy CheckExistsDichVu(string keyword, int Id);
+        List<Dichvuthuy> GetAll();
     }
 }

@@ -45,6 +45,11 @@ namespace WebKoi6.BLL.ImplementBLL
             }
         }
 
+        public List<Dichvuthuy> GetAll()
+        {
+            return _baseDAL.dichvuthuyRepository.Get().ToList();
+        }
+
         public Dichvuthuy GetById(int Id)
         {
             try

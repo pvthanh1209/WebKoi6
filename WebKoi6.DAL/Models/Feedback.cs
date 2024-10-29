@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebKoi6.DAL.Models;
 
@@ -15,5 +16,7 @@ public partial class Feedback
 
     public string? BinhLuan { get; set; }
 
-    public DateOnly? NgayPhanHoi { get; set; }
+    public DateOnly NgayPhanHoi { get; set; }
+    [NotMapped]
+    public int TotalRows { get; set; }
 }

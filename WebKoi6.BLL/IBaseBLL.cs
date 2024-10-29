@@ -13,5 +13,7 @@ namespace WebKoi6.BLL
         ITaiKhoanBLL taiKhoanBLL { get; }
         IDichvuthuyBLL dichvuthuyBLL { get; }
         IKhachhangBLL khachhangBLL { get; }
+        IFeebackBLL feebackBLL { get; }
+        IBanggiaBLL banggiaBLL { get; }
     }
 }

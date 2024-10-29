@@ -13,5 +13,7 @@ namespace WebKoi6.DAL
         ITaikhoanRepository taikhoanRepository { get; }
         IDichvuthuy dichvuthuyRepository { get; }
         IKhachhang khachhangRepository { get; }
+        IFeebackRepository feebackRepository { get; }
+        IBanggiaRepository banggiaRepository { get; }
     }
 }

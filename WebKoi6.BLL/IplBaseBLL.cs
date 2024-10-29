@@ -51,5 +51,21 @@ namespace WebKoi6.BLL
                 return _khachhangBLLRepo ?? (_khachhangBLLRepo = new IplKhachhangBLL(_baseDAL));
             }
         }
+        private IFeebackBLL _feebackBLLRepo;
+        public IFeebackBLL feebackBLL
+        {
+            get
+            {
+                return _feebackBLLRepo ?? (_feebackBLLRepo = new IplFeebackBLL(_baseDAL));
+            }
+        }
+        private IBanggiaBLL _banggiaBLLRepo;
+        public IBanggiaBLL banggiaBLL
+        {
+            get
+            {
+                return _banggiaBLLRepo ?? (_banggiaBLLRepo = new IplBanggiaBLL(_baseDAL));
+            }
+        }
     }
 }

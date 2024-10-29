@@ -53,5 +53,21 @@ namespace WebKoi6.DAL
                 return _khachhangRepository ?? (_khachhangRepository = new KhachhangRepository(_dbContext, _configuration));
             }
         }
+        private IFeebackRepository _feebackRepository;
+        public IFeebackRepository feebackRepository
+        {
+            get
+            {
+                return _feebackRepository ?? (_feebackRepository = new FeebackRepository(_dbContext, _configuration));
+            }
+        }
+        private IBanggiaRepository _banggiaRepository;
+        public IBanggiaRepository banggiaRepository
+        {
+            get
+            {
+                return _banggiaRepository ?? (_banggiaRepository = new BanggiaRepository(_dbContext, _configuration));
+            }
+        }
     }
 }

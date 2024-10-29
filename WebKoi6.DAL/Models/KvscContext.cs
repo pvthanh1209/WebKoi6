@@ -64,12 +64,10 @@ public partial class KvscContext : DbContext
 
         modelBuilder.Entity<Banggia>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("banggia");
-
+            entity.ToTable("banggia");
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
             entity.Property(e => e.Gia).HasPrecision(10, 2);
-            entity.Property(e => e.TenDichVu).HasMaxLength(100);
+            entity.Property(e => e.MaDichVu).HasColumnType("INT");
         });
 
         modelBuilder.Entity<Chuandoanbenhcakoi>(entity =>
