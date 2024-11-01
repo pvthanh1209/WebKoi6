@@ -39,7 +39,7 @@
                     <form action="/Admin/Banggia/AddOrEdit" method="post">
                         <input type="hidden" value="@Model.Id" name="Id" />
                         <div class="row gy-4">
-                            <div class="col-xxl-6 col-md-6">
+                            <div class="col-xxl-4 col-md-6">
                                 <div>
                                     <label class="form-label">Dịch vụ<span class="text-danger">*</span></label>
                                     <select class="form-control" name="MaDichVu">
@@ -61,10 +61,16 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-xxl-6 col-md-6">
+                            <div class="col-xxl-4 col-md-6">
                                 <div>
                                     <label class="form-label">Giá tiền<span class="text-danger">*</span></label>
                                     <input type="number" class="form-control" name="Gia" value="@Model.Gia" required>
+                                </div>
+                            </div>
+                            <div class="col-xxl-4 col-md-6">
+                                <div>
+                                    <label class="form-label">Phí do chuyển</label>
+                                    <input type="number" class="form-control" name="Phidichuyen" value="@Model.Phidichuyen">
                                 </div>
                             </div>
                             <div class="col-md-12">

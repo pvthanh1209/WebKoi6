@@ -7,11 +7,9 @@ public partial class Chuandoantinhtrangnuoc
 {
     public int Id { get; set; }
 
-    public string? TenKhachHang { get; set; }
+    public int KhachhangId { get; set; }
 
-    public string? SoDienThoai { get; set; }
-
-    public string? Email { get; set; }
+    public int LichhenId { get; set; }
 
     public DateOnly? NgayThang { get; set; }
 
@@ -20,6 +18,4 @@ public partial class Chuandoantinhtrangnuoc
     public decimal DoCuongNuoc { get; set; }
 
     public decimal NhietDo { get; set; }
-
-    public string? TinhTrang { get; set; }
 }

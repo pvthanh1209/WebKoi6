@@ -9,6 +9,7 @@ public partial class Banggia
     public int Id { get; set; }
     public int MaDichVu { get; set; }
     public decimal Gia { get; set; }
+    public decimal Phidichuyen { get; set; }
     [NotMapped]
     public int TotalRows { get; set; }
     [NotMapped]

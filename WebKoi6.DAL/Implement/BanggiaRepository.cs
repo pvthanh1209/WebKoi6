@@ -43,6 +43,7 @@ namespace WebKoi6.DAL.Implement
                                 Gia = b.Gia,
                                 TenDichVu = d.TenDichVu,
                                 TotalRows = total,
+                                Phidichuyen = b.Phidichuyen,
                             }).OrderByDescending(x => x.Id).Skip(offset).Take(limit).ToList();
                 return data;
             }

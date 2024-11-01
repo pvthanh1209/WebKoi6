@@ -97,6 +97,7 @@ namespace WebKoi6.Web.Areas.Admin.Controllers
                     }
                     entity.MaDichVu = model.MaDichVu;
                     entity.Gia = model.Gia;
+                    entity.Phidichuyen = model.Phidichuyen;
                     bool flag = _baseBLL.banggiaBLL.Update(entity);
                     if (!flag)
                     {

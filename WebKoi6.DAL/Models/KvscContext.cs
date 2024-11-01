@@ -37,13 +37,13 @@ public partial class KvscContext : DbContext
     public virtual DbSet<Lichhen> Lichhens { get; set; }
 
     public virtual DbSet<Thanhtuu> Thanhtuus { get; set; }
-
-    public virtual DbSet<Thuoc> Thuocs { get; set; }
-
     public virtual DbSet<Tintuc> Tintucs { get; set; }
 
     public virtual DbSet<Trungtam> Trungtams { get; set; }
     public virtual DbSet<Taikhoan> Taikhoans { get; set; }
+    public virtual DbSet<Donthuoc> Donthuocs { get; set; }
+    public virtual DbSet<Chitietdonthuoc> Chitietdonthuocs { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -76,14 +76,11 @@ public partial class KvscContext : DbContext
 
             entity.ToTable("chuandoanbenhcakoi");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Id).HasColumnName("Id");
             entity.Property(e => e.ChuanDoan).HasMaxLength(100);
             entity.Property(e => e.DauHieu).HasColumnType("text");
-            entity.Property(e => e.Email).HasMaxLength(100);
             entity.Property(e => e.HinhThucDieuTri).HasColumnType("text");
             entity.Property(e => e.NgayThang).HasMaxLength(10);
-            entity.Property(e => e.SoDienThoai).HasMaxLength(15);
-            entity.Property(e => e.TenKhachHang).HasMaxLength(100);
             entity.Property(e => e.TenLoaiCaKoi).HasMaxLength(100);
         });
 
@@ -95,14 +92,10 @@ public partial class KvscContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.DoCuongNuoc).HasPrecision(5, 2);
-            entity.Property(e => e.Email).HasMaxLength(100);
             entity.Property(e => e.NhietDo).HasPrecision(4, 1);
             entity.Property(e => e.Ph)
                 .HasPrecision(3, 1)
                 .HasColumnName("PH");
-            entity.Property(e => e.SoDienThoai).HasMaxLength(15);
-            entity.Property(e => e.TenKhachHang).HasMaxLength(100);
-            entity.Property(e => e.TinhTrang).HasColumnType("text");
         });
 
         modelBuilder.Entity<Dichvuthuy>(entity =>
@@ -165,19 +158,12 @@ public partial class KvscContext : DbContext
 
         modelBuilder.Entity<Lichhen>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("lichhen");
-
-            entity.Property(e => e.HomeVisit)
-                .HasDefaultValueSql("b'0'")
-                .HasColumnType("bit(1)");
-            entity.Property(e => e.NgayHen).HasColumnType("datetime");
-            entity.Property(e => e.TenBacSi).HasMaxLength(100);
-            entity.Property(e => e.TenKhachHang).HasMaxLength(100);
-            entity.Property(e => e.TrangThai)
-                .HasMaxLength(50)
-                .IsFixedLength();
+            entity.ToTable("lichhen");
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+            entity.Property(e => e.Ngayhen).HasColumnType("datetime");
+            entity.Property(e => e.DichVuId).HasColumnType("INT");
+            entity.Property(e => e.KhachhangId).HasColumnType("INT");
+            entity.Property(e => e.Trangthai).HasColumnType("INT");
         });
 
         modelBuilder.Entity<Thanhtuu>(entity =>
@@ -189,19 +175,6 @@ public partial class KvscContext : DbContext
             entity.Property(e => e.GhiChu).HasColumnType("text");
             entity.Property(e => e.MoTa).HasColumnType("text");
             entity.Property(e => e.TenThanhTuu).HasMaxLength(255);
-        });
-
-        modelBuilder.Entity<Thuoc>(entity =>
-        {
-            entity.HasKey(e => e.MaThuoc).HasName("PRIMARY");
-
-            entity.ToTable("thuoc");
-
-            entity.Property(e => e.CongDung).HasColumnType("text");
-            entity.Property(e => e.GhiChu).HasColumnType("text");
-            entity.Property(e => e.Gia).HasPrecision(10, 2);
-            entity.Property(e => e.LieuLuong).HasMaxLength(100);
-            entity.Property(e => e.TenThuoc).HasMaxLength(255);
         });
 
         modelBuilder.Entity<Tintuc>(entity =>
@@ -234,7 +207,22 @@ public partial class KvscContext : DbContext
             entity.Property(e => e.Username).HasMaxLength(250);
             entity.Property(e => e.Password).HasMaxLength(500);
         });
-
+        modelBuilder.Entity<Donthuoc>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+            entity.ToTable("donthuoc");
+            entity.Property(e => e.LichhenId).HasColumnType("INT");
+            entity.Property(e => e.Mota).HasMaxLength(500);
+        });
+        modelBuilder.Entity<Chitietdonthuoc>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+            entity.ToTable("chitietdonthuoc");
+            entity.Property(e => e.DonthuocId).HasColumnType("INT");
+            entity.Property(e => e.Tenthuoc).HasMaxLength(500);
+            entity.Property(e => e.Lieuluong).HasMaxLength(500);
+            entity.Property(e => e.hdsd).HasMaxLength(500);
+        });
         OnModelCreatingPartial(modelBuilder);
     }
 
