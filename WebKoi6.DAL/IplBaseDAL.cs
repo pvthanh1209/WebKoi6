@@ -69,5 +69,53 @@ namespace WebKoi6.DAL
                 return _banggiaRepository ?? (_banggiaRepository = new BanggiaRepository(_dbContext, _configuration));
             }
         }
+        private ICauhoiRepository _cauhoiRepository;
+        public ICauhoiRepository cauhoiRepository
+        {
+            get
+            {
+                return _cauhoiRepository ?? (_cauhoiRepository = new CauhoiRepository(_dbContext, _configuration));
+            }
+        }
+        private ITrungtamRepository _trungtamRepository;
+        public ITrungtamRepository trungtamRepository
+        {
+            get
+            {
+                return _trungtamRepository ?? (_trungtamRepository = new TrungtamRepository(_dbContext, _configuration));
+            }
+        }
+        private ILichhenRepository _lichhenRepository;
+        public ILichhenRepository lichhenRepository
+        {
+            get
+            {
+                return _lichhenRepository ?? (_lichhenRepository = new IplLichhenRepository(_dbContext, _configuration));
+            }
+        }
+        private IChuandoanbenhcakoiRepository _chuandoanbenhcakoiRepository;
+        public IChuandoanbenhcakoiRepository chuandoanbenhcakoiRepository
+        {
+            get
+            {
+                return _chuandoanbenhcakoiRepository ?? (_chuandoanbenhcakoiRepository = new ChuandoanbenhcakoiRepository(_dbContext, _configuration));
+            }
+        }
+        private IChuandoantinhtrangnuocRepository _chuandoantinhtrangnuocRepository;
+        public IChuandoantinhtrangnuocRepository chuandoantinhtrangnuocRepository
+        {
+            get
+            {
+                return _chuandoantinhtrangnuocRepository ?? (_chuandoantinhtrangnuocRepository = new ChuandoantinhtrangnuocRepository(_dbContext, _configuration));
+            }
+        }
+        private IDonthuocRepository _donthuocRepository;
+        public IDonthuocRepository donthuocRepository
+        {
+            get
+            {
+                return _donthuocRepository ?? (_donthuocRepository = new DonthuocRepository(_dbContext, _configuration));
+            }
+        }
     }
 }

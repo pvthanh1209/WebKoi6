@@ -15,5 +15,11 @@ namespace WebKoi6.BLL
         IKhachhangBLL khachhangBLL { get; }
         IFeebackBLL feebackBLL { get; }
         IBanggiaBLL banggiaBLL { get; }
+        ICauhoiBLL cauhoiBLL { get; }
+        ITrungtamBLL trungtamBLL { get; }
+        ILichhenBLL lichhenBLL { get; }
+        IChuandoantinhtrangnuocBLL chuandoantinhtrangnuocBLL { get; }
+        IChuandoanbenhcakoiBLL chuandoanbenhcakoiBLL { get; }
+        IDonthuocBLL donthuocBLL { get; }
     }
 }

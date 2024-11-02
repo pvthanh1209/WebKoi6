@@ -14,6 +14,7 @@ namespace WebKoi6.BLL.InterfaceBLL
         bool Insert(Khachhang model);
         bool Update(Khachhang model);
         bool Delete(int Id);
+        List<Khachhang> GetAll();
         Khachhang CheckExistsKhachhang(string keywork, int Id);
     }
 }

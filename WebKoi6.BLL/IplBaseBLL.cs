@@ -67,5 +67,53 @@ namespace WebKoi6.BLL
                 return _banggiaBLLRepo ?? (_banggiaBLLRepo = new IplBanggiaBLL(_baseDAL));
             }
         }
+        private ICauhoiBLL _cauhoiBLLRepo;
+        public ICauhoiBLL cauhoiBLL
+        {
+            get
+            {
+                return _cauhoiBLLRepo ?? (_cauhoiBLLRepo = new IplCauhoiBLL(_baseDAL));
+            }
+        }
+        private ITrungtamBLL _trungtamBLLRepo;
+        public ITrungtamBLL trungtamBLL
+        {
+            get
+            {
+                return _trungtamBLLRepo ?? (_trungtamBLLRepo = new IplTrungtamBLL(_baseDAL));
+            }
+        }
+        private ILichhenBLL _lichhenBLLRepo;
+        public ILichhenBLL lichhenBLL
+        {
+            get
+            {
+                return _lichhenBLLRepo ?? (_lichhenBLLRepo = new IplLichhenBLL(_baseDAL));
+            }
+        }
+        private IChuandoantinhtrangnuocBLL _chuandoantinhtrangnuocBLLRepo;
+        public IChuandoantinhtrangnuocBLL chuandoantinhtrangnuocBLL
+        {
+            get
+            {
+                return _chuandoantinhtrangnuocBLLRepo ?? (_chuandoantinhtrangnuocBLLRepo = new IplChuandoantinhtrangnuocBLL(_baseDAL));
+            }
+        }
+        private IChuandoanbenhcakoiBLL _chuandoanbenhcakoiBLLRepo;
+        public IChuandoanbenhcakoiBLL chuandoanbenhcakoiBLL
+        {
+            get
+            {
+                return _chuandoanbenhcakoiBLLRepo ?? (_chuandoanbenhcakoiBLLRepo = new IplChuandoanbenhcakoiBLL(_baseDAL));
+            }
+        }
+        private IDonthuocBLL _donthuocBLLRepo;
+        public IDonthuocBLL donthuocBLL
+        {
+            get
+            {
+                return _donthuocBLLRepo ?? (_donthuocBLLRepo = new IplDonthuocBLL(_baseDAL));
+            }
+        }
     }
 }

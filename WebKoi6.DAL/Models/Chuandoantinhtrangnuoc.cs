@@ -7,11 +7,9 @@ public partial class Chuandoantinhtrangnuoc
 {
     public int Id { get; set; }
 
-    public int KhachhangId { get; set; }
-
     public int LichhenId { get; set; }
 
-    public DateOnly? NgayThang { get; set; }
+    public DateTime? NgayThang { get; set; }
 
     public decimal Ph { get; set; }
 

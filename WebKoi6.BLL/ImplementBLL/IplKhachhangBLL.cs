@@ -44,6 +44,11 @@ namespace WebKoi6.BLL.ImplementBLL
             }
         }
 
+        public List<Khachhang> GetAll()
+        {
+            return _baseDAL.khachhangRepository.Get().ToList();
+        }
+
         public Khachhang GetById(int Id)
         {
             return _baseDAL.khachhangRepository.GetById(Id);
