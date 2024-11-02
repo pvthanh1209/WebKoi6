@@ -117,5 +117,13 @@ namespace WebKoi6.DAL
                 return _donthuocRepository ?? (_donthuocRepository = new DonthuocRepository(_dbContext, _configuration));
             }
         }
+        private ITintucRepository _tintucRepository;
+        public ITintucRepository tintucRepository
+        {
+            get
+            {
+                return _tintucRepository ?? (_tintucRepository = new TintucRepository(_dbContext, _configuration));
+            }
+        }
     }
 }

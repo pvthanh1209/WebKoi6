@@ -43,6 +43,21 @@ namespace WebKoi6.BLL.ImplementBLL
             }
         }
 
+        public List<Lichhen> GetLichHenByDate(DateTime date)
+        {
+            var data = new List<Lichhen>();
+            try
+            {
+                var dbLichhen = _baseDAL.lichhenRepository.Get(x => x.Ngayhen.Value.Date == date.Date).ToList();
+                return dbLichhen;
+            }
+            catch (Exception ex)
+            {
+               
+            }
+            return data;
+        }
+
         public List<LichhenMapping> GetListAllPaging(string keywork = null, int offset = 0, int limit = 10)
         {
             return _baseDAL.lichhenRepository.GetListAllPaging(keywork, offset, limit);

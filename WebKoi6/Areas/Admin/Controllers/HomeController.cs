@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebKoi6.BLL;
 using WebKoi6.Web.Areas.Admin.Controllers.Base;
+using WebKoi6.Web.Areas.Admin.Models;
 
 namespace WebKoi6.Web.Areas.Admin.Controllers
 {
@@ -10,9 +11,19 @@ namespace WebKoi6.Web.Areas.Admin.Controllers
         {
 
         }
-        public IActionResult Index()
+        public IActionResult Index(DateTime? date)
         {
-            return View();
+            var model = new HomeReport();
+            if (date == null)
+            {
+                date = DateTime.Now;
+            }
+            var data = _baseBLL.lichhenBLL.GetLichHenByDate(date.Value);
+            model.TotalLichHen = data.Count();
+            model.TotalLichChoXL = data.Where(x => x.Trangthai == 0).Count();
+            model.TotalLichHenHoanthanh = data.Where(x => x.Trangthai == 2).Count();
+            model.TotalLichHuy = data.Where(x => x.Trangthai == 3).Count();
+            return View(model);
         }
     }
 }

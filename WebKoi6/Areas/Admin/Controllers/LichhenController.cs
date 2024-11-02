@@ -72,7 +72,7 @@ namespace WebKoi6.Web.Areas.Admin.Controllers
                         return View(model);
                     }
                 }
-                if(model.DichVuId == 0 || model.KhachhangId == 0 || model.DichVuId == 0 || model.Ngayhen == null)
+                if (model.DichVuId == 0 || model.KhachhangId == 0 || model.DichVuId == 0 || model.Ngayhen == null)
                 {
                     ViewBag.Error = "Vui lòng nhập đầy đủ thông tin";
                     return View(model);
@@ -146,7 +146,20 @@ namespace WebKoi6.Web.Areas.Admin.Controllers
                     ViewBag.Error = "Thông tin lịch hẹn không tồn tại trong hệ thống";
                     return View(model);
                 }
+                var objBacsi = _baseBLL.bacsiBLLRepo.GetById(entity.BacsiId);
+                if (objBacsi == null)
+                {
+                    ViewBag.Error = "Thông tin bác sĩ không tồn tại trong hệ thống";
+                    return View(model);
+                }
                 entity.Trangthai = model.Trangthai;
+                objBacsi.Availability = "Rảnh";
+                bool flagBS = _baseBLL.bacsiBLLRepo.Update(objBacsi);
+                if (!flagBS)
+                {
+                    ViewBag.Error = "Cập nhật trạng thái lịch hẹn không thành công";
+                    return View(model);
+                }
                 bool flag = _baseBLL.lichhenBLL.Update(entity);
                 if (!flag)
                 {

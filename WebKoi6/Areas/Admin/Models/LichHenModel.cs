@@ -9,4 +9,12 @@ namespace WebKoi6.Web.Areas.Admin.Models
         public List<Chuandoanbenhcakoi> ListChuandoanbenhcakoi { get; set;}
         public List<Chuandoantinhtrangnuoc> ListChuandoantinhtrannuoc { get; set;}
     }
+    public class HomeReport
+    {
+        public int TotalLichHen { get; set; }
+        public int TotalLichHenHoanthanh {  get; set; }
+        public int TotalLichHuy {  get; set; }
+        public int TotalLichChoXL {  get; set; }
+
+    }
 }

@@ -115,5 +115,13 @@ namespace WebKoi6.BLL
                 return _donthuocBLLRepo ?? (_donthuocBLLRepo = new IplDonthuocBLL(_baseDAL));
             }
         }
+        private ITintucBLL _tintucBLLRepo;
+        public ITintucBLL tintucBLL
+        {
+            get
+            {
+                return _tintucBLLRepo ?? (_tintucBLLRepo = new IplTintucBLL(_baseDAL));
+            }
+        }
     }
 }

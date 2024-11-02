@@ -21,5 +21,6 @@ namespace WebKoi6.BLL
         IChuandoantinhtrangnuocBLL chuandoantinhtrangnuocBLL { get; }
         IChuandoanbenhcakoiBLL chuandoanbenhcakoiBLL { get; }
         IDonthuocBLL donthuocBLL { get; }
+        ITintucBLL tintucBLL { get; }
     }
 }

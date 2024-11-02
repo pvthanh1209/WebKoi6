@@ -14,5 +14,6 @@ namespace WebKoi6.BLL.InterfaceBLL
         bool Update(Lichhen model);
         bool Delete(int Id);
         Lichhen GetById(int Id);
+        List<Lichhen> GetLichHenByDate(DateTime date);
     }
 }

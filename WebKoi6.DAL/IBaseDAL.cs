@@ -21,5 +21,6 @@ namespace WebKoi6.DAL
         IChuandoanbenhcakoiRepository chuandoanbenhcakoiRepository { get; }
         IChuandoantinhtrangnuocRepository chuandoantinhtrangnuocRepository { get; }
         IDonthuocRepository donthuocRepository { get; }
+        ITintucRepository tintucRepository { get; }
     }
 }
