@@ -42,6 +42,11 @@ namespace WebKoi6.Controllers
         public IActionResult Index(DatlichModel model)
         {
             ViewDefault();
+            HomeModel data = new HomeModel();
+            data.ObjTrungTam = _baseBLL.trungtamBLL.GetObjTrungTam();
+            data.ListBacSi = _baseBLL.bacsiBLLRepo.GetAll();
+            data.ListTintuc = _baseBLL.tintucBLL.GetAll().OrderByDescending(x => x.MaTinTuc).Skip(0).Take(3).ToList();
+            data.ListFaq = _baseBLL.cauhoiBLL.GetAll().OrderByDescending(x => x.Faqid).Skip(0).Take(6).ToList();
             try
             {
                 if (!ModelState.IsValid)
@@ -50,12 +55,12 @@ namespace WebKoi6.Controllers
                     if (error != null)
                     {
                         ViewBag.Error = error;
-                        return View(model);
+                        return View(data);
                     }
                     else
                     {
                         ViewBag.Error = "Vui lòng nhập đầy đủ thông tin";
-                        return View(model);
+                        return View(data);
                     }
                 }
                 int khachhangId = 0;
@@ -77,7 +82,7 @@ namespace WebKoi6.Controllers
                     if (!flagKh)
                     {
                         ViewBag.Error = "Đặt lịch hẹn không thành công";
-                        return View(model);
+                        return View(data);
                     }
                     khachhangId = objKhachHang.Id;
                 }
@@ -87,27 +92,32 @@ namespace WebKoi6.Controllers
                     KhachhangId = khachhangId,
                     BacsiId = model.BacsiId,
                     Ngayhen = model.NgayDatLich,
+                    DichVuId = model.Madichvu,
                     Trangthai = 0,
                 };
                 bool flagLichHen = _baseBLL.lichhenBLL.Insert(objLichHen);
                 if (!flagLichHen)
                 {
                     ViewBag.Error = "Đặt lịch hẹn không thành công. Vui lòng thử lại hoặc gọi đến số hotline";
-                    return View(model);
+                    return View(data);
                 }
                 ViewBag.Success = "Đặt lich hẹn thành công";
-                return View(model);
+                return View(data);
             }
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
-                return View(model);
+                return View(data);
             }
         }
         [HttpPost]
-        [Route("home/index/form2")]
         public IActionResult Feedback(Feedback model)
         {
+            HomeModel data = new HomeModel();
+            data.ObjTrungTam = _baseBLL.trungtamBLL.GetObjTrungTam();
+            data.ListBacSi = _baseBLL.bacsiBLLRepo.GetAll();
+            data.ListTintuc = _baseBLL.tintucBLL.GetAll().OrderByDescending(x => x.MaTinTuc).Skip(0).Take(3).ToList();
+            data.ListFaq = _baseBLL.cauhoiBLL.GetAll().OrderByDescending(x => x.Faqid).Skip(0).Take(6).ToList();
             ViewDefault();
             try
             {
@@ -117,7 +127,7 @@ namespace WebKoi6.Controllers
                     if(errors != null)
                     {
                         ViewBag.Error = errors;
-                        return Redirect("/Home/Index");
+                        return View("Index", data);
                     }
                     else
                     {
@@ -130,15 +140,15 @@ namespace WebKoi6.Controllers
                 if (!flag)
                 {
                     ViewBag.Error = "Đánh giá không thành công";
-                    return Redirect("/Home/Index");
+                    return View("Index", data);
                 }
                 ViewBag.Success = "Đánh giá thành công";
-                return Redirect("/Home/Index");
+                return View("Index", data);
             }
             catch (Exception ex)
             {
                 ViewBag.Error = ex.Message;
-                return Redirect("/Home/Index");
+                return View("Index", data);
             }
         }
     }
