@@ -8,6 +8,7 @@ namespace WebKoi6.Web.Models
         public Trungtam ObjTrungTam { get; set; }
         public List<Bacsi> ListBacSi { get; set; }
         public List<Tintuc> ListTintuc { get; set; }
+        public List<Faq> ListFaq { get; set; }
     }
     public class DatlichModel
     {

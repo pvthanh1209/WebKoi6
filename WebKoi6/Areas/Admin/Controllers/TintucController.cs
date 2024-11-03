@@ -46,7 +46,7 @@ namespace WebKoi6.Web.Areas.Admin.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult AddOrEdit(Tintuc model, IFormFile fileUpload)
+        public IActionResult AddOrEdit(Tintuc model, IFormFile? fileUpload)
         {
             try
             {

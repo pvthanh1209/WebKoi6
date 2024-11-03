@@ -25,6 +25,7 @@ namespace WebKoi6.Controllers
             model.ObjTrungTam = _baseBLL.trungtamBLL.GetObjTrungTam();
             model.ListBacSi = _baseBLL.bacsiBLLRepo.GetAll();
             model.ListTintuc = _baseBLL.tintucBLL.GetAll().OrderByDescending(x => x.MaTinTuc).Skip(0).Take(3).ToList();
+            model.ListFaq = _baseBLL.cauhoiBLL.GetAll().OrderByDescending(x => x.Faqid).Skip(0).Take(6).ToList();
             return View(model);
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -101,6 +102,43 @@ namespace WebKoi6.Controllers
             {
                 ViewBag.Error = ex.Message;
                 return View(model);
+            }
+        }
+        [HttpPost]
+        [Route("home/index/form2")]
+        public IActionResult Feedback(Feedback model)
+        {
+            ViewDefault();
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    var errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).FirstOrDefault();
+                    if(errors != null)
+                    {
+                        ViewBag.Error = errors;
+                        return Redirect("/Home/Index");
+                    }
+                    else
+                    {
+                        ViewBag.Error = "Vui lòng nhập đầy đủ thông tin";
+                        return Redirect("/Home/Index");
+                    }
+                }
+                model.NgayPhanHoi = DateTime.Now;
+                bool flag = _baseBLL.feebackBLL.Insert(model);
+                if (!flag)
+                {
+                    ViewBag.Error = "Đánh giá không thành công";
+                    return Redirect("/Home/Index");
+                }
+                ViewBag.Success = "Đánh giá thành công";
+                return Redirect("/Home/Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+                return Redirect("/Home/Index");
             }
         }
     }

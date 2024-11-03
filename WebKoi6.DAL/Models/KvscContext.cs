@@ -152,7 +152,7 @@ public partial class KvscContext : DbContext
 
             entity.ToTable("tintuc");
 
-            entity.Property(e => e.NoiDung).HasColumnType("text");
+            entity.Property(e => e.NoiDung).HasColumnType("LONGTEXT");
             entity.Property(e => e.TacGia).HasMaxLength(100);
             entity.Property(e => e.TieuDe).HasMaxLength(255);
         });

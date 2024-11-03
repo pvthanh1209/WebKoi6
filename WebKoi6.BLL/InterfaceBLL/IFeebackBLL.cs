@@ -10,5 +10,6 @@ namespace WebKoi6.BLL.InterfaceBLL
     public interface IFeebackBLL
     {
         List<Feedback> GetFeedbackListAllPaging(string search, int offset, int limit);
+        bool Insert(Feedback model);
     }
 }

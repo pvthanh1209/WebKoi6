@@ -21,5 +21,19 @@ namespace WebKoi6.BLL.ImplementBLL
         {
             return _baseDAL.feebackRepository.GetFeebackListAllPaging(search, offset, limit);
         }
+
+        public bool Insert(Feedback model)
+        {
+            try
+            {
+                _baseDAL.feebackRepository.Insert(model);
+                _baseDAL.feebackRepository.SaveChange();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

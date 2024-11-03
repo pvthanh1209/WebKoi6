@@ -48,7 +48,7 @@
     </div>
 </section>
 
-@if(Model.ObjTrungTam != null)
+@if (Model.ObjTrungTam != null)
 {
     <!-- ABOUT -->
     <section id="about">
@@ -70,7 +70,7 @@
         </div>
     </section>
 }
-@if(Model.ListBacSi != null && Model.ListBacSi.Count > 0)
+@if (Model.ListBacSi != null && Model.ListBacSi.Count > 0)
 {
     <!-- TEAM -->
     <section id="team" data-stellar-background-ratio="1">
@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="clearfix"></div>
-                @foreach(var item in Model.ListBacSi)
+                @foreach (var item in Model.ListBacSi)
                 {
                     <div class="col-md-4 col-sm-6 mb-2">
                         <div class="team-thumb wow fadeInUp" data-wow-delay="0.2s">
@@ -106,7 +106,7 @@
     </section>
 }
 
-@if(Model.ListTintuc != null && Model.ListTintuc.Count > 0)
+@if (Model.ListTintuc != null && Model.ListTintuc.Count > 0)
 {
     <!-- NEWS -->
     <section id="news" data-stellar-background-ratio="2.5">
@@ -119,7 +119,7 @@
                         <h2>Tin tức mới nhất</h2>
                     </div>
                 </div>
-                @foreach(var item in Model.ListTintuc)
+                @foreach (var item in Model.ListTintuc)
                 {
                     <div class="col-md-4 col-sm-6">
                         <!-- NEWS THUMB -->
@@ -199,9 +199,9 @@
                             <label for="select">Dịch vụ</label>
                             <select class="form-control" name="Madichvu">
                                 <option value="0">-Chọn dịch vụ-</option>
-                                @if(lstDichvu != null && lstDichvu.Count > 0)
+                                @if (lstDichvu != null && lstDichvu.Count > 0)
                                 {
-                                    foreach(var item in lstDichvu)
+                                    foreach (var item in lstDichvu)
                                     {
                                         <option value="@item.MaDichVu">@item.TenDichVu</option>
                                     }
@@ -213,6 +213,90 @@
                             <label for="telephone">Số điên thoại</label>
                             <input type="tel" class="form-control" id="phone" name="Sodienthoai" placeholder="Số điện thoại">
                             <button type="submit" class="form-control" id="cf-submit" name="submit">Đặt lịch</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+@if (Model.ListFaq != null && Model.ListFaq.Count > 0)
+{
+    <!-- FAQ -->
+    <section data-stellar-background-ratio="5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="about-info">
+                        <h2 class="wow fadeInUp" data-wow-delay="0.1s">Các câu hỏi thường gặp?</h2>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+                @foreach (var item in Model.ListFaq)
+                {
+                    <div class="col-md-4 col-sm-6 mb-2">
+                        <div class="team-thumb wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="team-info">
+                                <h3>@item.CauHoi</h3>
+                                <div class="team-contact-info">
+                                    <p>@item.CauTraLoi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}
+
+<section id="appointment" data-stellar-background-ratio="6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <img src="/assets/images/feedback.jpeg" class="img-responsive" alt="">
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <!-- CONTACT FORM HERE -->
+                <form id="appointment-form" role="form" method="post" action="/home/index/form2">
+                    <!-- SECTION TITLE -->
+                    <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                        <h2>Gửi thông tin đánh giá</h2>
+                    </div>
+                    @if (ViewBag.Error != null)
+                    {
+                        <span class="text-danger">@ViewBag.Error</span>
+                    }
+                    @if (ViewBag.Success != null)
+                    {
+                        <span class="text-success">@ViewBag.Success</span>
+                    }
+                    <div class="wow fadeInUp" data-wow-delay="0.8s">
+                        <div class="col-md-6 col-sm-6">
+                            <label for="name">Họ và tên</label>
+                            <input type="text" class="form-control" id="name" name="TenKhachHang" placeholder="Họ và tên" required>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="Email" placeholder="Email " required>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <label for="select">Đánh giá</label>
+                            <select class="form-control" name="DanhGia" required>
+                                <option value="">-Đánh giá-</option>
+                                <option value="Tốt">Tốt</option>
+                                <option value="Khá">Khá</option>
+                                <option value="Trung bình">Trung bình</option>
+                                <option value="Tệ">Tệ</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+                            <label for="">Bình luận</label>
+                            <textarea class="form-control" rows="5" id="message" name="BinhLuan" placeholder="Bình luận" required></textarea>
+                            <button type="submit" class="form-control" id="cf-submit" name="submit">Gửi</button>
                         </div>
                     </div>
                 </form>
