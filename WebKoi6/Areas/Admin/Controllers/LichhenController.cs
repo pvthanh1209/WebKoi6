@@ -153,14 +153,14 @@ namespace WebKoi6.Web.Areas.Admin.Controllers
                     return View(model);
                 }            
                 if(model.Trangthai == 2 || model.Trangthai == 3)
-                {
-                    entity.Trangthai = model.Trangthai;
+                {             
                     objBacsi.Availability = "Rảnh";
                 }
                 else if(model.Trangthai == 1)
                 {
                     objBacsi.Availability = "Bận";
                 }
+                entity.Trangthai = model.Trangthai;
                 bool flagBS = _baseBLL.bacsiBLLRepo.Update(objBacsi);
                 if (!flagBS)
                 {
