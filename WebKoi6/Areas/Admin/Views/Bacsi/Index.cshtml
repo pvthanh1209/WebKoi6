@@ -48,7 +48,9 @@
                             <th>Tên bác sĩ</th>
                             <th>Kinh nghiệm</th>
                             <th>Email</th>
+                            <td>Số điện thoại</td>
                             <th>Trạng thái hiện tại</th>
+                            <th>Nội dung thời gian làm việc</th>
                             <th>Chức năng</th>
                         </tr>
                     </thead>
@@ -61,7 +63,9 @@
                                     <td>@item.TenBacSi</td>
                                     <td>@item.KinhNghiem</td>
                                     <td>@item.Email</td>
+                                    <td>@item.Sodienthoai</td>
                                     <td>@item.Availability</td>
+                                    <td>@item.Noidung</td>
                                     <td>
                                         <a class="btn btn-info btn-sm me-2" href="/Admin/Bacsi/AddOrEdit?id=@item.Id">Sửa</a>
                                         <a class="btn btn-danger btn-sm" onclick="return confirm('Bạn có muốn xóa bác sĩ này?')" href="/Admin/Bacsi/Delete?id=@item.Id">Xóa</a>

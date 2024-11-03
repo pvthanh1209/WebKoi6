@@ -151,9 +151,16 @@ namespace WebKoi6.Web.Areas.Admin.Controllers
                 {
                     ViewBag.Error = "Thông tin bác sĩ không tồn tại trong hệ thống";
                     return View(model);
+                }            
+                if(model.Trangthai == 2 || model.Trangthai == 3)
+                {
+                    entity.Trangthai = model.Trangthai;
+                    objBacsi.Availability = "Rảnh";
                 }
-                entity.Trangthai = model.Trangthai;
-                objBacsi.Availability = "Rảnh";
+                else if(model.Trangthai == 1)
+                {
+                    objBacsi.Availability = "Bận";
+                }
                 bool flagBS = _baseBLL.bacsiBLLRepo.Update(objBacsi);
                 if (!flagBS)
                 {

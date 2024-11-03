@@ -90,6 +90,8 @@ namespace WebKoi6.Web.Areas.Admin.Controllers
                     entity.TenBacSi = model.TenBacSi;
                     entity.Email = model.Email;
                     entity.KinhNghiem = model.KinhNghiem;
+                    entity.Noidung = model.Noidung;
+                    entity.Sodienthoai = model.Sodienthoai;
                     bool flag = _baseBLL.bacsiBLLRepo.Update(entity);
                     if (!flag)
                     {

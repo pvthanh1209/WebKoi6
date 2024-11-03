@@ -62,6 +62,12 @@ namespace WebKoi6.BLL.ImplementBLL
             return _baseDAL.trungtamRepository.GetListAllPaging(keywork, offset, limit);
         }
 
+        public Trungtam GetObjTrungTam()
+        {
+            var data = _baseDAL.trungtamRepository.Get().OrderByDescending(x => x.Id).FirstOrDefault();
+            return data;
+        }
+
         public bool Insert(Trungtam model)
         {
             try

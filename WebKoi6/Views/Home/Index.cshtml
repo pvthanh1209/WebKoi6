@@ -1,6 +1,11 @@
-﻿@{
+﻿@using WebKoi6.DAL.Models
+@using WebKoi6.Web.Models
+@model HomeModel
+@{
     ViewData["Title"] = "Trang chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var lstDichvu = (List<Dichvuthuy>)ViewBag.ListDichVu;
+    var lstBacsi = (List<Bacsi>)ViewBag.ListBacsi;
 }
 <!-- HOME -->
 <section id="home" class="slider" data-stellar-background-ratio="0.5">
@@ -11,9 +16,9 @@
                 <div class="item item-first">
                     <div class="caption">
                         <div class="col-md-offset-1 col-md-10">
-                            <h3>Let's make your life happier</h3>
-                            <h1>Healthy Living</h1>
-                            <a href="#team" class="section-btn btn btn-default smoothScroll">Meet Our Doctors</a>
+                            <h3>Hãy làm hệ sinh thế trong bể cá trở lên tốt hơn</h3>
+                            <h1>Koi koi 06</h1>
+                            <a href="#team" class="section-btn btn btn-default smoothScroll">Gặp gỡ bác sĩ của chúng tôi</a>
                         </div>
                     </div>
                 </div>
@@ -21,9 +26,9 @@
                 <div class="item item-second">
                     <div class="caption">
                         <div class="col-md-offset-1 col-md-10">
-                            <h3>Aenean luctus lobortis tellus</h3>
-                            <h1>New Lifestyle</h1>
-                            <a href="#about" class="section-btn btn btn-default btn-gray smoothScroll">More About Us</a>
+                            <h3>Bạn muốn xem thông tin trung tâm chăm sóc sức khỏe cá koi của chúng tôi</h3>
+                            <h1>Thông tin trung tâm</h1>
+                            <a href="#about" class="section-btn btn btn-default btn-gray smoothScroll">Tìm hiểm thêm về chúng tôi</a>
                         </div>
                     </div>
                 </div>
@@ -31,9 +36,9 @@
                 <div class="item item-third">
                     <div class="caption">
                         <div class="col-md-offset-1 col-md-10">
-                            <h3>Pellentesque nec libero nisi</h3>
-                            <h1>Your Health Benefits</h1>
-                            <a href="#news" class="section-btn btn btn-default btn-blue smoothScroll">Read Stories</a>
+                            <h3>Bạn muốn xem thêm về tin tức của trung tâm</h3>
+                            <h1>Tin tức về hệ sinh thái, trung tâm mới nhất</h1>
+                            <a href="#news" class="section-btn btn btn-default btn-blue smoothScroll">Tìm hiểu thêm</a>
                         </div>
                     </div>
                 </div>
@@ -43,243 +48,171 @@
     </div>
 </section>
 
-
-<!-- ABOUT -->
-<section id="about">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-6 col-sm-6">
-                <div class="about-info">
-                    <h2 class="wow fadeInUp" data-wow-delay="0.6s">Welcome to Your <i class="fa fa-h-square"></i>ealth Center</h2>
-                    <div class="wow fadeInUp" data-wow-delay="0.8s">
-                        <p>Aenean luctus lobortis tellus, vel ornare enim molestie condimentum. Curabitur lacinia nisi vitae velit volutpat venenatis.</p>
-                        <p>Sed a dignissim lacus. Quisque fermentum est non orci commodo, a luctus urna mattis. Ut placerat, diam a tempus vehicula.</p>
+@if(Model.ObjTrungTam != null)
+{
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="about-info">
+                        <h2 class="wow fadeInUp" data-wow-delay="0.6s">Chào mừng bạn đến với <b>KOIKOI06</b></h2>
+                        <div class="wow fadeInUp" data-wow-delay="0.8s">
+                            <p>Tên trung tâm: @Model.ObjTrungTam.TenTrungTam</p>
+                            <p>Địa chỉ: @Model.ObjTrungTam.DiaChi</p>
+                            <p>Hotline: @Model.ObjTrungTam.Hotline</p>
+                            <p>@Model.ObjTrungTam.MoTa</p>
+                        </div>
                     </div>
-                    <figure class="profile wow fadeInUp" data-wow-delay="1s">
-                        <img src="images/author-image.jpg" class="img-responsive" alt="">
-                        <figcaption>
-                            <h3>Dr. Neil Jackson</h3>
-                            <p>General Principal</p>
-                        </figcaption>
-                    </figure>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+}
+@if(Model.ListBacSi != null && Model.ListBacSi.Count > 0)
+{
+    <!-- TEAM -->
+    <section id="team" data-stellar-background-ratio="1">
+        <div class="container">
+            <div class="row">
 
-
-<!-- TEAM -->
-<section id="team" data-stellar-background-ratio="1">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-6 col-sm-6">
-                <div class="about-info">
-                    <h2 class="wow fadeInUp" data-wow-delay="0.1s">Our Doctors</h2>
-                </div>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <div class="col-md-4 col-sm-6">
-                <div class="team-thumb wow fadeInUp" data-wow-delay="0.2s">
-                    <img src="images/team-image1.jpg" class="img-responsive" alt="">
-
-                    <div class="team-info">
-                        <h3>Nate Baston</h3>
-                        <p>General Principal</p>
-                        <div class="team-contact-info">
-                            <p><i class="fa fa-phone"></i> 010-020-0120</p>
-                            <p><i class="fa fa-envelope-o"></i> <a href="#">general@company.com</a></p>
-                        </div>
-                        <ul class="social-icon">
-                            <li><a href="#" class="fa fa-linkedin-square"></a></li>
-                            <li><a href="#" class="fa fa-envelope-o"></a></li>
-                        </ul>
+                <div class="col-md-6 col-sm-6">
+                    <div class="about-info">
+                        <h2 class="wow fadeInUp" data-wow-delay="0.1s">Bác sĩ của chúng tôi</h2>
                     </div>
-
                 </div>
-            </div>
 
-            <div class="col-md-4 col-sm-6">
-                <div class="team-thumb wow fadeInUp" data-wow-delay="0.4s">
-                    <img src="images/team-image2.jpg" class="img-responsive" alt="">
+                <div class="clearfix"></div>
+                @foreach(var item in Model.ListBacSi)
+                {
+                    <div class="col-md-4 col-sm-6 mb-2">
+                        <div class="team-thumb wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="team-info">
+                                <h3>@item.TenBacSi</h3>
+                                <div class="team-contact-info">
+                                    <p><i class="fa fa-phone"></i>@item.Sodienthoai</p>
+                                    <p><i class="fa fa-envelope-o"></i> <a href="javascript:void(0)">@item.Email</a></p>
+                                    <p><i class="fa fa-line-chart"></i>Kinh nghiệm: @item.KinhNghiem năm</p>
+                                    <p><i class="fa fa-clock-o"></i>@item.Noidung</p>
+                                </div>
+                            </div>
 
-                    <div class="team-info">
-                        <h3>Jason Stewart</h3>
-                        <p>Pregnancy</p>
-                        <div class="team-contact-info">
-                            <p><i class="fa fa-phone"></i> 010-070-0170</p>
-                            <p><i class="fa fa-envelope-o"></i> <a href="#">pregnancy@company.com</a></p>
                         </div>
-                        <ul class="social-icon">
-                            <li><a href="#" class="fa fa-facebook-square"></a></li>
-                            <li><a href="#" class="fa fa-envelope-o"></a></li>
-                            <li><a href="#" class="fa fa-flickr"></a></li>
-                        </ul>
                     </div>
-
-                </div>
+                }
             </div>
-
-            <div class="col-md-4 col-sm-6">
-                <div class="team-thumb wow fadeInUp" data-wow-delay="0.6s">
-                    <img src="images/team-image3.jpg" class="img-responsive" alt="">
-
-                    <div class="team-info">
-                        <h3>Miasha Nakahara</h3>
-                        <p>Cardiology</p>
-                        <div class="team-contact-info">
-                            <p><i class="fa fa-phone"></i> 010-040-0140</p>
-                            <p><i class="fa fa-envelope-o"></i> <a href="#">cardio@company.com</a></p>
-                        </div>
-                        <ul class="social-icon">
-                            <li><a href="#" class="fa fa-twitter"></a></li>
-                            <li><a href="#" class="fa fa-envelope-o"></a></li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
+}
 
+@if(Model.ListTintuc != null && Model.ListTintuc.Count > 0)
+{
+    <!-- NEWS -->
+    <section id="news" data-stellar-background-ratio="2.5">
+        <div class="container">
+            <div class="row">
 
-<!-- NEWS -->
-<section id="news" data-stellar-background-ratio="2.5">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-12 col-sm-12">
-                <!-- SECTION TITLE -->
-                <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
-                    <h2>Latest News</h2>
+                <div class="col-md-12 col-sm-12">
+                    <!-- SECTION TITLE -->
+                    <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                        <h2>Tin tức mới nhất</h2>
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6">
-                <!-- NEWS THUMB -->
-                <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">
-                    <a href="news-detail.html">
-                        <img src="images/news-image1.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="news-info">
-                        <span>March 08, 2018</span>
-                        <h3><a href="news-detail.html">About Amazing Technology</a></h3>
-                        <p>Maecenas risus neque, placerat volutpat tempor ut, vehicula et felis.</p>
-                        <div class="author">
-                            <img src="images/author-image.jpg" class="img-responsive" alt="">
-                            <div class="author-info">
-                                <h5>Jeremie Carlson</h5>
-                                <p>CEO / Founder</p>
+                @foreach(var item in Model.ListTintuc)
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <!-- NEWS THUMB -->
+                        <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">
+                            <a href="/Tintuc/Index?Id=@item.MaTinTuc">
+                                <img src="/Upload/Tintuc/@item.Hinhanh" style="width:360px; height:202px;" class="img-responsive" alt="">
+                            </a>
+                            <div class="news-info">
+                                <span>@item.NgayDang.Value.ToString("dd-MM-yyyy")</span>
+                                <h3><a href="/Tintuc/Detail?Id=@item.MaTinTuc">@item.TieuDe</a></h3>
+                                <div class="author">
+                                    <div class="author-info">
+                                        <h5>@item.TacGia</h5>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
             </div>
-
-            <div class="col-md-4 col-sm-6">
-                <!-- NEWS THUMB -->
-                <div class="news-thumb wow fadeInUp" data-wow-delay="0.6s">
-                    <a href="news-detail.html">
-                        <img src="images/news-image2.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="news-info">
-                        <span>February 20, 2018</span>
-                        <h3><a href="news-detail.html">Introducing a new healing process</a></h3>
-                        <p>Fusce vel sem finibus, rhoncus massa non, aliquam velit. Nam et est ligula.</p>
-                        <div class="author">
-                            <img src="images/author-image.jpg" class="img-responsive" alt="">
-                            <div class="author-info">
-                                <h5>Jason Stewart</h5>
-                                <p>General Director</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-6">
-                <!-- NEWS THUMB -->
-                <div class="news-thumb wow fadeInUp" data-wow-delay="0.8s">
-                    <a href="news-detail.html">
-                        <img src="images/news-image3.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="news-info">
-                        <span>January 27, 2018</span>
-                        <h3><a href="news-detail.html">Review Annual Medical Research</a></h3>
-                        <p>Vivamus non nulla semper diam cursus maximus. Pellentesque dignissim.</p>
-                        <div class="author">
-                            <img src="images/author-image.jpg" class="img-responsive" alt="">
-                            <div class="author-info">
-                                <h5>Andrio Abero</h5>
-                                <p>Online Advertising</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-
+}
 <!-- MAKE AN APPOINTMENT -->
 <section id="appointment" data-stellar-background-ratio="3">
     <div class="container">
         <div class="row">
 
             <div class="col-md-6 col-sm-6">
-                <img src="images/appointment-image.jpg" class="img-responsive" alt="">
+                <img src="/assets/images/appointment-image.jpg" class="img-responsive" alt="">
             </div>
 
             <div class="col-md-6 col-sm-6">
                 <!-- CONTACT FORM HERE -->
-                <form id="appointment-form" role="form" method="post" action="#">
-
+                <form id="appointment-form" role="form" method="post" action="/Home/Index">
                     <!-- SECTION TITLE -->
                     <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
-                        <h2>Make an appointment</h2>
+                        <h2>Đặt lịch hẹn khám</h2>
                     </div>
-
+                    @if (ViewBag.Error != null)
+                    {
+                        <span class="text-danger">@ViewBag.Error</span>
+                    }
+                    @if (ViewBag.Success != null)
+                    {
+                        <span class="text-success">@ViewBag.Success</span>
+                    }
                     <div class="wow fadeInUp" data-wow-delay="0.8s">
                         <div class="col-md-6 col-sm-6">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Full Name">
+                            <label for="name">Họ và tên</label>
+                            <input type="text" class="form-control" id="name" name="TenKhachHang" placeholder="Họ và tên">
                         </div>
 
                         <div class="col-md-6 col-sm-6">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
+                            <input type="email" class="form-control" id="email" name="Email" placeholder="Email ">
                         </div>
-
                         <div class="col-md-6 col-sm-6">
-                            <label for="date">Select Date</label>
-                            <input type="date" name="date" value="" class="form-control">
+                            <label for="date">Ngày đặt lịch</label>
+                            <input type="date" name="NgayDatLich" value="" class="form-control">
                         </div>
-
                         <div class="col-md-6 col-sm-6">
-                            <label for="select">Select Department</label>
-                            <select class="form-control">
-                                <option>General Health</option>
-                                <option>Cardiology</option>
-                                <option>Dental</option>
-                                <option>Medical Research</option>
+                            <label for="select">Bác sĩ</label>
+                            <select class="form-control" name="BacsiId">
+                                <option value="0">-Chọn bác sĩ-</option>
+                                @if (lstBacsi != null && lstBacsi.Count > 0)
+                                {
+                                    foreach (var item in lstBacsi)
+                                    {
+                                        <option value="@item.Id">@item.TenBacSi</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <label for="select">Dịch vụ</label>
+                            <select class="form-control" name="Madichvu">
+                                <option value="0">-Chọn dịch vụ-</option>
+                                @if(lstDichvu != null && lstDichvu.Count > 0)
+                                {
+                                    foreach(var item in lstDichvu)
+                                    {
+                                        <option value="@item.MaDichVu">@item.TenDichVu</option>
+                                    }
+                                }
                             </select>
                         </div>
 
                         <div class="col-md-12 col-sm-12">
-                            <label for="telephone">Phone Number</label>
-                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone">
-                            <label for="Message">Additional Message</label>
-                            <textarea class="form-control" rows="5" id="message" name="message" placeholder="Message"></textarea>
-                            <button type="submit" class="form-control" id="cf-submit" name="submit">Submit Button</button>
+                            <label for="telephone">Số điên thoại</label>
+                            <input type="tel" class="form-control" id="phone" name="Sodienthoai" placeholder="Số điện thoại">
+                            <button type="submit" class="form-control" id="cf-submit" name="submit">Đặt lịch</button>
                         </div>
                     </div>
                 </form>

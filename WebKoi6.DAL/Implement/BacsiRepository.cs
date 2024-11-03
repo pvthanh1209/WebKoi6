@@ -42,6 +42,8 @@ namespace WebKoi6.DAL.Implement
                                 Email = b.Email,
                                 Availability = b.Availability,
                                 TotalRows = totalRow,
+                                Noidung = b.Noidung,
+                                Sodienthoai = b.Sodienthoai,
                            }).OrderByDescending(x => x.Id).Skip(offset).Take(limit).ToList();
                 return data;            
             }

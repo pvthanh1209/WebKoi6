@@ -14,5 +14,6 @@ namespace WebKoi6.BLL.InterfaceBLL
         bool Update(Tintuc model);
         bool Delete(int Id);
         Tintuc GetById(int Id);
+        List<Tintuc> GetAll();
     }
 }

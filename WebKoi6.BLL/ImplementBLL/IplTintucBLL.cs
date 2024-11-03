@@ -30,6 +30,11 @@ namespace WebKoi6.BLL.ImplementBLL
             }
         }
 
+        public List<Tintuc> GetAll()
+        {
+            return _baseDAL.tintucRepository.Get().ToList();
+        }
+
         public Tintuc GetById(int Id)
         {
             try

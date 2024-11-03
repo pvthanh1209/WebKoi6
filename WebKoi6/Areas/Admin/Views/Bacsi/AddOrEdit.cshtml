@@ -58,11 +58,23 @@
                             </div>
                             <div class="col-xxl-4 col-md-6">
                                 <div>
+                                    <label class="form-label">Số điện thoại<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="Sodienthoai" value="@Model.Sodienthoai" required>
+                                </div>
+                            </div>
+                            <div class="col-xxl-4 col-md-6">
+                                <div>
                                     <label class="form-label">Trạng thái hiện tại<span class="text-danger">*</span></label>
                                     <select class="form-control" name="Availability">
                                         <option value="Rảnh" @(Model.Availability == "Rảnh" ? "selected" :"")>Rảnh</option>
                                         <option value="Bận" @(Model.Availability == "Bận" ? "selected" : "")>Bận</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-xxl-12 col-md-12">
+                                <div>
+                                    <label class="form-label">Nội dung thời gian làm việc<span class="text-danger">*</span></label>
+                                    <textarea class="form-control" name="Noidung" cols="6" rows="6">@Model.Noidung</textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">
